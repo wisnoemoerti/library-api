@@ -31,6 +31,7 @@ export class TransactionsService {
     }
 
     const book: BooksEntity = await this.booksService.findOne(book_id);
+
     if (!book) {
       throw new Error('Book not found');
     }
@@ -60,6 +61,10 @@ export class TransactionsService {
 
     book.stock -= 1;
     await this.booksService.save(book);
+
+    member.is_penalty = false;
+    member.penalty_until = null;
+    await this.membersService.save(member);
   }
 
   async returnBook(returnBookDto: ReturnBookDto): Promise<void> {

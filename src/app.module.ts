@@ -16,6 +16,8 @@ import { BooksService } from './domain/books/books.service';
 import { MembersService } from './domain/members/members.service';
 import { TransactionsService } from './domain/transactions/transactions.service';
 
+import { BooksSeeder } from './infrastructure/databases/seeds/books.seeder';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -32,6 +34,12 @@ import { TransactionsService } from './domain/transactions/transactions.service'
     MembersController,
     TransactionsController,
   ],
-  providers: [AppService, BooksService, MembersService, TransactionsService],
+  providers: [
+    AppService,
+    BooksService,
+    MembersService,
+    TransactionsService,
+    BooksSeeder,
+  ],
 })
 export class AppModule {}

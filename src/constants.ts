@@ -10,9 +10,13 @@ export const TypeOrmConfig = {
   database: process.env.DB_NAME,
   entities: ['dist/**/*.model{.ts,.js}'],
   migrations: ['dist/infrastructure/database/migrations/*{.ts,.js}'],
+  seeds: ['dist/infrastructure/database/seeds/*{.ts,.js}'],
   autoLoadEntities: true,
-  synchronize: false,
+  synchronize: true,
   logging: false,
+  cli: {
+    migationsDir: 'dist/infrastructure/database/migrations',
+  },
 };
 
 export const APP_PORT = process.env.PORT || 3000;
